@@ -1,0 +1,47 @@
+# suppress inspection "SpringBootApplicationProperties" for whole file
+spring: 
+  profiles: 
+    active: 
+      -dev
+---
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smim?useSSL=false&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  application:
+    name: ProviderDept
+
+eureka:
+  client: # 客户端注入进eureka服务列表中
+    service-url:
+#      defaultZone: http://localhost:7001/eureka
+       defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: ProviderDept-8001
+    prefer-ip-address: true
+
+server:
+  port: 8001
+
+logging:
+  level:
+    com.kingsware.dao: debug
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kingsware.bean
+
+info:
+  app:
+    name: kingsware-microservice
+    version: 1.0.0
+  company:
+    name: www.kingsware.com
+  build:
+    artifactId: $project.artifactId$
+    version: $project.version$
