@@ -71,10 +71,6 @@ eureka:
 server:
   port: 8001
 
-logging:
-  level:
-    com.kingsware.dao: info
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.kingsware.bean
